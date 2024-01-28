@@ -32,7 +32,7 @@ public class BorrowingService {
         Patron patronInDb = patronService.getPatronById(patronId);
 
         BorrowingRecord borrowingRecordInDb = borrowingRepository.findByBookIdAndPatronIdAndReturnDate(bookId, patronId, null);
-        log.info("Borrow ");
+        log.info("Borrowing book record is {}", borrowingRecordInDb);
         if (null == borrowingRecordInDb || null != borrowingRecordInDb.getReturnDate()) {
             BorrowingRecord borrowingRecord = new BorrowingRecord();
             borrowingRecord.setBook(bookInDb);
