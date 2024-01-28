@@ -19,22 +19,25 @@ import java.util.Objects;
 public class ControllerExceptionAdvice {
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
     public ResponsePayload<Object> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException methodArgumentNotValidException) {
         return new ResponsePayload<>(null, String.valueOf(Arrays.stream(Objects.requireNonNull(methodArgumentNotValidException.getDetailMessageArguments())).map(String::valueOf).toList()));
     }
 
     @ExceptionHandler(value = BookNotFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponsePayload<Object> bookNotFoundExceptionHandler(BookNotFoundException bookNotFoundException) {
         return new ResponsePayload<>(null, bookNotFoundException.getMsg());
     }
 
     @ExceptionHandler(value = PatronNotFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponsePayload<Object> patronNotFoundExceptionHandler(PatronNotFoundException patronNotFoundException) {
         return new ResponsePayload<>(null, patronNotFoundException.getMsg());
     }
 
     @ExceptionHandler(value = BorrowingException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
     public ResponsePayload<Object> borrowingExceptionHandler(BorrowingException borrowingException) {
         return new ResponsePayload<>(null, borrowingException.getMsg());
     }
