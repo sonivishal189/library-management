@@ -14,6 +14,7 @@ Java
 Spring Boot
 Spring JPA
 Spring Cache
+SpringDoc-OpenAPI
 H2 Database
 Lombok
 Maven
@@ -34,7 +35,7 @@ Installation:
    mvn clean install
 3. Run the application:
    mvn spring-boot:run
-4. Test/Call APIs (Postman)
+4. Test/Call APIs - Swagger (http://localhost:8080/swagger-ui/index.html) or Postman
 
 Endpoints:
 ----------
@@ -56,11 +57,11 @@ Endpoints:
 1. POST /api/borrow/{bookId}/patron/{patronId}: Allow a patron to borrow a book.
 2. PUT /api/return/{bookId}/patron/{patronId}: Record the return of a borrowed book by a patron.
 
-Exception handling is done using Exception Handler which retuns proper error message with appropiate HTTP status code.
+Exception handling is done using Exception Handler which returns proper error message with appropriate HTTP status code.
 Logging is done using Lombok Slf4j. All the logs are traced on console.
 Using spring cache all the books and patron responses are cached and updated or deleted according to the operations performed.
 Services layer operations are tested using JUnit and Mockito with 100% code coverage.
 
-All these datas are stored in H2 database in BOOK, PATRON and BORROWING_RECORD tables. 
+All these data are stored in H2 database in BOOK, PATRON and BORROWING_RECORD tables. 
 H2 database can be accessed using h2-console at http://localhost:8080/h2-console/ using username "sa" and password "password"
 
